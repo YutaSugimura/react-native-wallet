@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly atoms/Button (default) 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "#FFF",
+        "borderColor": undefined,
+        "borderRadius": 0,
+        "borderWidth": 1,
+        "height": 46,
+        "width": 300,
+      },
+      false,
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "#1C1C1C",
+          "fontSize": 14,
+          "fontWeight": "400",
+        },
+        Object {
+          "color": undefined,
+          "fontSize": 13,
+          "fontWeight": "bold",
+          "lineHeight": undefined,
+        },
+      ]
+    }
+  >
+    button click
+  </Text>
+</View>
+`;
+
+exports[`renders correctly atoms/Button (props) 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "#1C1C1C",
+        "borderColor": "#1C1C1C",
+        "borderRadius": 12,
+        "borderWidth": 1,
+        "height": 60,
+        "width": 360,
+      },
+      false,
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "#1C1C1C",
+          "fontSize": 14,
+          "fontWeight": "400",
+        },
+        Object {
+          "color": "#1C1C1C",
+          "fontSize": 15,
+          "fontWeight": "700",
+          "lineHeight": undefined,
+        },
+      ]
+    }
+  >
+    button click
+  </Text>
+</View>
+`;

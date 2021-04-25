@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly atoms/Typography (default) 1`] = `
+<Text
+  allowFontScaling={false}
+  style={
+    Array [
+      Object {
+        "color": "#1C1C1C",
+        "fontSize": 14,
+        "fontWeight": "400",
+      },
+      Object {
+        "color": undefined,
+        "fontSize": undefined,
+        "fontWeight": undefined,
+        "lineHeight": undefined,
+      },
+    ]
+  }
+>
+  text
+</Text>
+`;
+
+exports[`renders correctly atoms/Typography (props) 1`] = `
+<Text
+  allowFontScaling={false}
+  style={
+    Array [
+      Object {
+        "color": "#1C1C1C",
+        "fontSize": 14,
+        "fontWeight": "400",
+      },
+      Object {
+        "color": "#1C1C1C",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "lineHeight": 16,
+      },
+    ]
+  }
+>
+  text
+</Text>
+`;

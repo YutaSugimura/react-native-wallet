@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly atoms/Typography/AnchorLink (props) 1`] = `
+<Text
+  allowFontScaling={false}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "textDecorationLine": "underline",
+      },
+      Object {
+        "color": "#1C1C1C",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "lineHeight": 24,
+        "textDecorationColor": "#1C1C1C",
+      },
+    ]
+  }
+>
+  text
+</Text>
+`;
+
+exports[`renders correctly atoms/Typography/AnchorLink 1`] = `
+<Text
+  allowFontScaling={false}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "textDecorationLine": "underline",
+      },
+      Object {
+        "color": undefined,
+        "fontSize": 14,
+        "fontWeight": "400",
+        "lineHeight": 24,
+        "textDecorationColor": undefined,
+      },
+    ]
+  }
+>
+  text
+</Text>
+`;
