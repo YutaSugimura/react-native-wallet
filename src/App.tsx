@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,9 +18,20 @@ import {
   useColorScheme,
 } from 'react-native';
 import crypto from 'crypto';
+import bip39 from 'react-native-bip39';
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [mnemonic, setMnemonic] = useState<string>('');
+
+  const generateMnemonic = async () => {
+    const newMnemonic = await bip39.generateMnemonic(256);
+    setMnemonic(newMnemonic);
+  };
+
+  useEffect(() => {
+    generateMnemonic();
+  }, []);
 
   return (
     <SafeAreaView>
@@ -29,6 +40,8 @@ const App: React.FC = () => {
         <Text style={styles.sectionDescription}>
           Random: {crypto.randomBytes(32).toString('base64')}
         </Text>
+
+        <Text>Mnemonci: {mnemonic}</Text>
       </ScrollView>
     </SafeAreaView>
   );
