@@ -18,19 +18,19 @@ import {
   useColorScheme,
 } from 'react-native';
 import crypto from 'crypto';
-import bip39 from 'react-native-bip39';
+import { generateMnemonic } from './scripts/mnemonic';
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [mnemonic, setMnemonic] = useState<string>('');
 
-  const generateMnemonic = async () => {
-    const newMnemonic = await bip39.generateMnemonic(256);
+  const changeMnemonic = async () => {
+    const newMnemonic = await generateMnemonic();
     setMnemonic(newMnemonic);
   };
 
   useEffect(() => {
-    generateMnemonic();
+    changeMnemonic();
   }, []);
 
   return (
