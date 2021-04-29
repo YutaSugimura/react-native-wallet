@@ -15,6 +15,8 @@ import { ethers } from 'ethers';
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [mnemonic, setMnemonic] = useState<string>('none');
+  const [address, setAddress] = useState<string>('');
+  const [privateKey, setPrivateKey] = useState<string>('');
 
   const getMnemonic = () => {
     const wallet = ethers.Wallet.createRandom();
@@ -22,10 +24,9 @@ const App: React.FC = () => {
     setMnemonic(newMnemonic.phrase);
 
     const hdnode = ethers.utils.HDNode.fromMnemonic(newMnemonic.phrase);
-    const nodeA = hdnode.derivePath("m/44'/60'/0'/0");
-    const nodeB = hdnode.derivePath("m/44'/60'/0'/1");
-    console.log('1', nodeA.address);
-    console.log('2', nodeB.address);
+    const account1 = hdnode.derivePath("m/44'/60'/0'/0");
+    setAddress(account1.address);
+    setPrivateKey(account1.privateKey);
   };
 
   useEffect(() => {
@@ -37,6 +38,8 @@ const App: React.FC = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <Text>Mnemonci: {mnemonic}</Text>
+        <Text>Address: {address}</Text>
+        <Text>PrivateKey: {privateKey}</Text>
       </ScrollView>
     </SafeAreaView>
   );
