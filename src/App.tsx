@@ -8,38 +8,58 @@
  * @format
  */
 
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, Text, useColorScheme } from 'react-native';
-import { ethers } from 'ethers';
+import React from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Text,
+  Button,
+  useColorScheme,
+  ActivityIndicator,
+} from 'react-native';
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [mnemonic, setMnemonic] = useState<string>('none');
-  const [address, setAddress] = useState<string>('');
-  const [privateKey, setPrivateKey] = useState<string>('');
+  const { isLoading, toggle } = require('./hooks/loading').useIsLoading();
+  const { mnemonic, getMnemonic } = require('./hooks/mnemonic').useMnemonic();
+  const { address, privateKey, getAccount } = require('./hooks/account').useAccount();
 
-  const getMnemonic = () => {
-    const wallet = ethers.Wallet.createRandom();
-    const newMnemonic = wallet.mnemonic;
-    setMnemonic(newMnemonic.phrase);
+  const wrapGetMnemonic = async () => {
+    toggle(true);
 
-    const hdnode = ethers.utils.HDNode.fromMnemonic(newMnemonic.phrase);
-    const account1 = hdnode.derivePath("m/44'/60'/0'/0");
-    setAddress(account1.address);
-    setPrivateKey(account1.privateKey);
+    setTimeout(() => {
+      getMnemonic();
+      toggle(false);
+    }, 300);
   };
 
-  useEffect(() => {
-    getMnemonic();
-  }, []);
+  const wrapGetAccount = async () => {
+    if (mnemonic === '') return;
+
+    toggle(true);
+    setTimeout(() => {
+      getAccount(mnemonic);
+      toggle(false);
+    }, 300);
+  };
 
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Text>Mnemonci: {mnemonic}</Text>
+        {isLoading && <ActivityIndicator size="large" />}
+
+        <Text>Mnemonic: {mnemonic}</Text>
         <Text>Address: {address}</Text>
         <Text>PrivateKey: {privateKey}</Text>
+
+        <Button title="getMnemonic" disabled={isLoading ? true : false} onPress={wrapGetMnemonic} />
+        <Button
+          title="getAccount"
+          disabled={isLoading ? true : mnemonic === '' ? true : false}
+          onPress={wrapGetAccount}
+        />
       </ScrollView>
     </SafeAreaView>
   );
